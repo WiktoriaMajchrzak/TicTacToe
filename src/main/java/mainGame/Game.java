@@ -1,10 +1,18 @@
 package mainGame;
 
+import java.util.Scanner;
 
 public class Game {
 
+    Scanner scanner = new Scanner(System.in);
+
     private static final int gameSize = 3;
     private static int playerNumber = 1;
+    private static final String firstSymbol = "O";
+    private static final String secondSymbol = "X";
+    private static int row;
+    private static int col;
+    private static boolean endGame = false;
 
     private static final String[][] board = new String[gameSize][gameSize];
 
@@ -12,8 +20,11 @@ public class Game {
         System.out.println(Messages.WELCOME_MESSAGE);
         initEmptyBoard();
         printTheBoard();
-        callPlayerMove(playerNumber);
-        printTheBoard();
+        while (!endGame) {
+            callPlayerMove(playerNumber);
+            playerMove();
+            printTheBoard();
+        }
         System.out.println(Messages.WIN_GAME);
     }
 
@@ -46,6 +57,36 @@ public class Game {
             System.out.println(Messages.FIRST_PLAYER_MOVE);
         } else {
             System.out.println(Messages.SECOND_PLAYER_MOVE);
+        }
+    }
+
+    private void enterRow() {
+        System.out.println(Messages.ENTER_ROW);
+        row = scanner.nextInt() - 1;
+    }
+
+    private void enterCol() {
+        System.out.println(Messages.ENTER_COL);
+        col = scanner.nextInt() - 1;
+    }
+
+    private void playerMove() {
+        enterRow();
+        enterCol();
+        fillTheCell();
+    }
+
+    private void fillTheCell() {
+        if (board[row][col].equals(" ")) {
+            if (playerNumber == 1) {
+                board[row][col] = firstSymbol;
+                playerNumber = 2;
+            } else {
+                board[row][col] = secondSymbol;
+                playerNumber = 1;
+            }
+        } else {
+            System.out.println(Messages.NOT_EMPTY_CELL);
         }
     }
 
