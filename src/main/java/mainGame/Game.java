@@ -1,10 +1,21 @@
 package mainGame;
 
+
 public class Game {
 
     private static final int gameSize = 3;
+    private static int playerNumber = 1;
 
     private static final String[][] board = new String[gameSize][gameSize];
+
+    public void play() {
+        System.out.println(Messages.WELCOME_MESSAGE);
+        initEmptyBoard();
+        printTheBoard();
+        callPlayerMove(playerNumber);
+        printTheBoard();
+        System.out.println(Messages.WIN_GAME);
+    }
 
     private static void printTheBoard() {
         for (int i = 0; i < gameSize; i++) {
@@ -30,5 +41,12 @@ public class Game {
         }
     }
 
+    private void callPlayerMove(int player) {
+        if (player == 1) {
+            System.out.println(Messages.FIRST_PLAYER_MOVE);
+        } else {
+            System.out.println(Messages.SECOND_PLAYER_MOVE);
+        }
+    }
 
 }
