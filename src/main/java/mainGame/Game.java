@@ -24,6 +24,7 @@ public class Game {
             callPlayerMove(playerNumber);
             playerMove();
             printTheBoard();
+            endGame = playerWon(row, col);
         }
         System.out.println(Messages.WIN_GAME);
     }
@@ -88,6 +89,22 @@ public class Game {
         } else {
             System.out.println(Messages.NOT_EMPTY_CELL);
         }
+    }
+
+    private boolean playerWon(int row, int col) {
+        if ((board[row][0].equals(board[row][1])) && (board[row][0].equals(board[row][2]))) {
+            return true;
+        }
+        if ((board[0][col].equals(board[1][col])) && (board[0][col].equals(board[2][col]))) {
+            return true;
+        }
+        if ((row == col) && ((board[0][0].equals(board[1][1])) && (board[0][0].equals(board[2][2])))) {
+            return true;
+        }
+        if ((row + col == 4) && ((board[0][2].equals(board[1][1])) && (board[0][2].equals(board[2][0])))) {
+            return true;
+        }
+        return false;
     }
 
 }
