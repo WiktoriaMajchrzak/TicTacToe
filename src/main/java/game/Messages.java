@@ -1,4 +1,4 @@
-package mainGame;
+package game;
 
 public enum Messages {
     WELCOME_MESSAGE("Hello Players! It's the Tic Tac Toe game!"),
