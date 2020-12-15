@@ -26,14 +26,14 @@ public class Board {
                 }
             }
             if (i < gameSize - 1) {
-                System.out.println("");
+                System.out.println();
                 for (int k = 0; k < gameSize - 1; k++) {
                     System.out.print("-+");
                 }
                 System.out.println("-");
             }
         }
-        System.out.println("");
+        System.out.println();
     }
 
     private void initEmptyBoard() {
