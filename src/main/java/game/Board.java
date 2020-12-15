@@ -2,13 +2,20 @@ package game;
 
 public class Board {
 
+
     private final int gameSize;
     private final String[][] board;
 
     public Board(int gameSize) {
         this.gameSize = gameSize;
         this.board = new String[gameSize][gameSize];
+        initEmptyBoard();
     }
+
+    public int getGameSize() {
+        return gameSize;
+    }
+
 
     public void printTheBoard() {
         for (int i = 0; i < gameSize; i++) {
@@ -29,7 +36,7 @@ public class Board {
         System.out.println("");
     }
 
-    public void initEmptyBoard() {
+    private void initEmptyBoard() {
         for (int i = 0; i < gameSize; i++) {
             for (int j = 0; j < gameSize; j++) {
                 board[i][j] = " ";

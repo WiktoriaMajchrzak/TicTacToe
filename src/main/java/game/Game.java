@@ -11,13 +11,13 @@ public class Game {
     private final List<Player> players = new ArrayList<>();
 
     public Game() {
-        players.add(new Player("O", board));
-        players.add(new Player("X", board));
+        players.add(new Player("O", board, 1));
+        players.add(new Player("X", board, 2));
     }
+
 
     public void play() {
         System.out.println(Messages.WELCOME_MESSAGE);
-        board.initEmptyBoard();
         board.printTheBoard();
         while (!endGame) {
             for (Player player : players) {

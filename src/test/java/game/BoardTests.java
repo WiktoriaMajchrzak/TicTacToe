@@ -11,7 +11,6 @@ public class BoardTests {
     @BeforeMethod
     public void setBoard() {
         this.board = new Board(3);
-        board.initEmptyBoard();
     }
 
     @Test

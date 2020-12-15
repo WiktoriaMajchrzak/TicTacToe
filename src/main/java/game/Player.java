@@ -1,21 +1,26 @@
 package game;
 
+import java.io.InputStream;
 import java.util.Scanner;
 
 public class Player {
 
 
-    Scanner scanner = new Scanner(System.in);
+    private Scanner scanner;
 
     private final String symbol;
     private final Board board;
     private final int playerNumber;
-    private static int ordinalNumber = 1;
 
-    public Player(String symbol, Board board) {
+    public Player(String symbol, Board board, int playerNumber) {
         this.symbol = symbol;
         this.board = board;
-        this.playerNumber = ordinalNumber++;
+        this.playerNumber = playerNumber;
+        this.scanner = new Scanner(System.in);
+    }
+
+    public void setInput(InputStream inputStream) {
+        scanner = new Scanner(inputStream);
     }
 
     private void callPlayerMove() {
@@ -41,12 +46,22 @@ public class Player {
 
     private int enterRow() {
         System.out.println(Messages.ENTER_ROW);
-        return scanner.nextInt() - 1;
+        int row = scanner.nextInt() - 1;
+        while (row < 0 || row >= board.getGameSize()) {
+            System.out.println(Messages.ENTER_ROW);
+            row = scanner.nextInt() - 1;
+        }
+        return row;
     }
 
     private int enterCol() {
         System.out.println(Messages.ENTER_COL);
-        return scanner.nextInt() - 1;
+        int col = scanner.nextInt() - 1;
+        while (col < 0 || col >= board.getGameSize()) {
+            System.out.println(Messages.ENTER_ROW);
+            col = scanner.nextInt() - 1;
+        }
+        return col;
     }
 
 }
