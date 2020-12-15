@@ -19,21 +19,21 @@ public class PlayerTests {
     }
 
     @Test
-    public void shouldReturnFalse() {
+    public void shouldReturnFalseForMoveWithoutWinning() {
         String data = "1\r\n2\r\n";
         player.setInput(new ByteArrayInputStream(data.getBytes()));
         Assert.assertFalse(player.playerMove());
     }
 
     @Test
-    public void shouldReturnFalsex2() {
+    public void shouldReturnFalseForMoveWithoutWinningWithFirstMoveOutOfRange() {
         String data = "5\r\n2\r\n3\r\n";
         player.setInput(new ByteArrayInputStream(data.getBytes()));
         Assert.assertFalse(player.playerMove());
     }
 
     @Test
-    public void shouldReturnTrue() {
+    public void shouldReturnTrueForWinningMoves() {
         String data = "1\r\n1\r\n" +
                 "1\r\n2\r\n" +
                 "1\r\n3\r\n";
