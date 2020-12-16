@@ -51,52 +51,42 @@ public class Board {
     private boolean checkRow(int row) {
         for (int i = 0; i < gameSize - 1; i++) {
             if (!(board[row][i].equals(board[row][i + 1]))) {
-                System.out.println("check row : false");
                 return false;
             }
         }
-        System.out.println("check row : true");
         return true;
     }
 
     private boolean checkCol(int col) {
         for (int i = 0; i < gameSize - 1; i++) {
             if (!(board[i][col].equals(board[i + 1][col]))) {
-                System.out.println("check col : false");
                 return false;
             }
         }
-        System.out.println("check col : true");
         return true;
     }
 
     private boolean checkFirstDiagonal() {
         if (board[0][0].equals(" ")) {
-            System.out.println("check first diagonal : false");
             return false;
         }
         for (int i = 0; i < gameSize - 1; i++) {
             if (!(board[i][i].equals(board[i + 1][i + 1]))) {
-                System.out.println("check first diagonal : false");
                 return false;
             }
         }
-        System.out.println("check first diagonal : true");
         return true;
     }
 
     private boolean checkSecondDiagonal() {
         if (board[0][gameSize - 1].equals(" ")) {
-            System.out.println("check second diagonal : false");
             return false;
         }
         for (int i = 0; i < gameSize - 1; i++) {
             if (!(board[i][gameSize - 1 - i].equals(board[i + 1][gameSize - 1 - i - 1]))) {
-                System.out.println("check second diagonal : false");
                 return false;
             }
         }
-        System.out.println("check second diagonal : true");
         return true;
     }
 
