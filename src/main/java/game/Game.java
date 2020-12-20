@@ -9,12 +9,12 @@ public class Game {
 
     private final Board board = new Board(3);
     private final List<Player> players = new ArrayList<>();
+    private final Arbiter arbiter = new Arbiter();
 
     public Game() {
-        players.add(new Player("O", board, 1));
-        players.add(new Player("X", board, 2));
+        players.add(new Player("O", board, arbiter, 1));
+        players.add(new Player("X", board, arbiter, 2));
     }
-
 
     public void play() {
         System.out.println(Messages.WELCOME_MESSAGE);

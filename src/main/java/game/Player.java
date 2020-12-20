@@ -5,16 +5,18 @@ import java.util.Scanner;
 
 public class Player {
 
-
     private Scanner scanner;
 
     private final String symbol;
     private final Board board;
+    private final Arbiter arbiter;
     private final int playerNumber;
 
-    public Player(String symbol, Board board, int playerNumber) {
+
+    public Player(String symbol, Board board, Arbiter arbiter, int playerNumber) {
         this.symbol = symbol;
         this.board = board;
+        this.arbiter = arbiter;
         this.playerNumber = playerNumber;
         this.scanner = new Scanner(System.in);
     }
@@ -41,7 +43,7 @@ public class Player {
             col = enterCol();
             filled = board.fillCell(row, col, symbol);
         }
-        return board.playerWon(row, col);
+        return arbiter.playerWon(board.getBoard(), row, col);
     }
 
     private int enterRow() {
@@ -58,7 +60,7 @@ public class Player {
         System.out.println(Messages.ENTER_COL);
         int col = scanner.nextInt() - 1;
         while (col < 0 || col >= board.getGameSize()) {
-            System.out.println(Messages.ENTER_ROW);
+            System.out.println(Messages.ENTER_COL);
             col = scanner.nextInt() - 1;
         }
         return col;

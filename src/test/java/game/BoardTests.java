@@ -7,10 +7,12 @@ import org.testng.annotations.Test;
 public class BoardTests {
 
     private Board board;
+    private Arbiter arbiter;
 
     @BeforeMethod
     public void setBoard() {
         this.board = new Board(3);
+        this.arbiter = new Arbiter();
     }
 
     @Test
@@ -20,7 +22,7 @@ public class BoardTests {
         board.fillCell(0,1,"X");
         board.fillCell(1,1,"O");
         board.fillCell(0,2,"X");
-        Assert.assertTrue(board.playerWon(0, 2));
+        Assert.assertTrue(arbiter.playerWon(board.getBoard(),0, 2));
     }
 
     @Test
@@ -30,7 +32,7 @@ public class BoardTests {
         board.fillCell(1,1,"X");
         board.fillCell(1,2,"O");
         board.fillCell(2,1,"X");
-        Assert.assertTrue(board.playerWon(2, 1));
+        Assert.assertTrue(arbiter.playerWon(board.getBoard(),2, 1));
     }
 
     @Test
@@ -40,7 +42,7 @@ public class BoardTests {
         board.fillCell(1,1,"X");
         board.fillCell(2,0,"O");
         board.fillCell(2,2,"X");
-        Assert.assertTrue(board.playerWon(2, 2));
+        Assert.assertTrue(arbiter.playerWon(board.getBoard(),2, 2));
     }
 
     @Test
@@ -50,7 +52,7 @@ public class BoardTests {
         board.fillCell(1,1,"X");
         board.fillCell(2,1,"O");
         board.fillCell(2,0,"X");
-        Assert.assertTrue(board.playerWon(2, 0));
+        Assert.assertTrue(arbiter.playerWon(board.getBoard(),2, 0));
     }
 
     @Test
@@ -60,7 +62,7 @@ public class BoardTests {
         board.fillCell(1,1,"X");
         board.fillCell(1,2,"O");
         board.fillCell(2,0,"X");
-        Assert.assertFalse(board.playerWon(2, 0));
+        Assert.assertFalse(arbiter.playerWon(board.getBoard(),2, 0));
     }
 
     @Test
@@ -70,7 +72,7 @@ public class BoardTests {
         board.fillCell(1,0,"X");
         board.fillCell(2,0,"O");
         board.fillCell(1,1,"X");
-        Assert.assertFalse(board.playerWon(1, 1));
+        Assert.assertFalse(arbiter.playerWon(board.getBoard(),1, 1));
     }
 
     @Test

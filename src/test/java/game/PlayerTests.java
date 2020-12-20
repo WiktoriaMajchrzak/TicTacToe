@@ -15,7 +15,7 @@ public class PlayerTests {
     @BeforeMethod
     public void setUp() {
         this.board = new Board(3);
-        this.player = new Player("X", board, 1);
+        this.player = new Player("X", board, new Arbiter(), 1);
     }
 
     @Test

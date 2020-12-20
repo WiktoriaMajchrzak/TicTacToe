@@ -16,6 +16,9 @@ public class Board {
         return gameSize;
     }
 
+    public String[][] getBoard(){
+        return board;
+    }
 
     public void printTheBoard() {
         for (int i = 0; i < gameSize; i++) {
@@ -44,52 +47,6 @@ public class Board {
         }
     }
 
-    public boolean playerWon(int row, int col) {
-        return checkRow(row) || checkCol(col) || checkFirstDiagonal() || checkSecondDiagonal();
-    }
-
-    private boolean checkRow(int row) {
-        for (int i = 0; i < gameSize - 1; i++) {
-            if (!(board[row][i].equals(board[row][i + 1]))) {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    private boolean checkCol(int col) {
-        for (int i = 0; i < gameSize - 1; i++) {
-            if (!(board[i][col].equals(board[i + 1][col]))) {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    private boolean checkFirstDiagonal() {
-        if (board[0][0].equals(" ")) {
-            return false;
-        }
-        for (int i = 0; i < gameSize - 1; i++) {
-            if (!(board[i][i].equals(board[i + 1][i + 1]))) {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    private boolean checkSecondDiagonal() {
-        if (board[0][gameSize - 1].equals(" ")) {
-            return false;
-        }
-        for (int i = 0; i < gameSize - 1; i++) {
-            if (!(board[i][gameSize - 1 - i].equals(board[i + 1][gameSize - 1 - i - 1]))) {
-                return false;
-            }
-        }
-        return true;
-    }
-
     public boolean fillCell(int row, int col, String symbol) {
         if (board[row][col].equals(" ")) {
             board[row][col] = symbol;
@@ -99,5 +56,7 @@ public class Board {
             return false;
         }
     }
+
+
 
 }
